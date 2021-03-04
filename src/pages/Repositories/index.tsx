@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { FiGithub } from 'react-icons/fi';
 
 import Header from '../../components/Header';
+import RepositoryModal from '../../components/RepositoryModal';
 
 import {
   Container,
@@ -47,6 +48,7 @@ const repositories = [
 const Repositories: React.FC = () => {
   const [page, setPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(5);
+  const [showRepositoryModal, setShowRepositoryModal] = useState(false);
 
   const handleNextPage = useCallback(() => {
     setPage(page + 1);
@@ -58,9 +60,21 @@ const Repositories: React.FC = () => {
     }
   }, [page]);
 
+  const handleClickRepostory = useCallback(() => {
+    setShowRepositoryModal(true);
+  }, []);
+
+  const handleClickOutsideModal = useCallback(() => {
+    setShowRepositoryModal(false);
+  }, []);
+
   return (
     <Container>
       <Header />
+
+      {showRepositoryModal && (
+        <RepositoryModal handleClickOutsideModal={handleClickOutsideModal} />
+      )}
 
       <RepositoriesListContainer>
         <PersonalInformationContainer>
@@ -90,7 +104,11 @@ const Repositories: React.FC = () => {
         <RepositoriesView>
           {repositories &&
             repositories.map(repository => (
-              <button key={repository.id} type="button">
+              <button
+                key={repository.id}
+                type="button"
+                onClick={handleClickRepostory}
+              >
                 <strong>{repository.name}</strong>
 
                 <span>{repository.description}</span>

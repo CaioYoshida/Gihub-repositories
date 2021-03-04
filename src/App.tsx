@@ -6,6 +6,8 @@ import GlobalStyle from './styles/globalStyle';
 // import Dashboard from './pages/Dashboard';
 import Repositories from './pages/Repositories';
 
+// import RepositoryModal from './components/RepositoryModal';
+
 const App: React.FC = () => (
   <>
     <GlobalStyle />
