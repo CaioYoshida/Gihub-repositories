@@ -16,6 +16,7 @@ export const Container = styled.div`
 
   > img {
     height: 50px;
+    margin-right: 10px;
   }
 `;
 
@@ -57,6 +58,13 @@ export const SideMenu = styled.div`
       height: 44px;
       border-radius: 22px;
       border: 2px solid #c4c4c4;
+    }
+  }
+
+  @media (max-width: 500px) {
+    justify-content: flex-end;
+    > div {
+      display: none;
     }
   }
 `;

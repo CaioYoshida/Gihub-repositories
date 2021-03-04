@@ -13,6 +13,7 @@ export const Container = styled.div<ContainerProps>`
 
   height: 50px;
   width: 100%;
+  padding: 0 10px;
   background-color: #fbfbfb;
   border-radius: 6px;
   border: 2px solid #bbb;
@@ -42,7 +43,6 @@ export const Container = styled.div<ContainerProps>`
     `}
 
   svg {
-    margin-left: 10px;
     margin-right: 8px;
   }
 
@@ -50,7 +50,6 @@ export const Container = styled.div<ContainerProps>`
     height: 25px;
     font-size: 18px;
     padding: 0px;
-    margin-right: 10px;
     flex: 1;
     border: 0;
     background: transparent;
@@ -63,6 +62,8 @@ export const Container = styled.div<ContainerProps>`
 
     &::placeholder {
       color: #bbb;
+      font-weight: 400;
+      font-style: italic;
     }
   }
 `;
