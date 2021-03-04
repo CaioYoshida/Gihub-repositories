@@ -1,8 +1,14 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { FiGithub } from 'react-icons/fi';
 
+import api from '../../services/api';
+
 import Header from '../../components/Header';
-import RepositoryModal from '../../components/RepositoryModal';
+import RepositoryModal, {
+  RepositoryProps,
+} from '../../components/RepositoryModal';
+
+import { UserProps } from '../Dashboard';
 
 import {
   Container,
@@ -12,43 +18,30 @@ import {
   PaginationContainer,
 } from './styles';
 
-const repositories = [
-  {
-    id: 1,
-    name: 'gaearon/6t05',
-    description:
-      'Turn ES6+ code into readable vanille ES5 with source maps and more',
-  },
-  {
-    id: 2,
-    name: 'gaearon/6t05',
-    description:
-      'Turn ES6+ code into readable vanille ES5 with source maps and more',
-  },
-  {
-    id: 3,
-    name: 'gaearon/6t05',
-    description:
-      'Turn ES6+ code into readable vanille ES5 with source maps and more',
-  },
-  {
-    id: 4,
-    name: 'gaearon/6t05',
-    description:
-      'Turn ES6+ code into readable vanille ES5 with source maps and more',
-  },
-  {
-    id: 5,
-    name: 'gaearon/6t05',
-    description:
-      'Turn ES6+ code into readable vanille ES5 with source maps and more',
-  },
-];
-
 const Repositories: React.FC = () => {
   const [page, setPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(5);
   const [showRepositoryModal, setShowRepositoryModal] = useState(false);
+  const [user, setUser] = useState<UserProps>();
+  const [repository, setRepository] = useState<RepositoryProps>();
+  const [repositoriesList, setRepositoriesList] = useState<
+    Array<RepositoryProps>
+  >([]);
+
+  useEffect(() => {
+    async function loadRepositoriesData(): Promise<void> {
+      const { data: repositoriesData } = await api.get(
+        `guilhermerodz/repos?per_page=5&page=${page}`,
+      );
+      const { data: userData } = await api.get('guilhermerodz');
+
+      setRepositoriesList(repositoriesData);
+      setUser(userData);
+      setNumberOfPages(Math.ceil(userData.public_repos / 5));
+    }
+
+    loadRepositoriesData();
+  }, [page]);
 
   const handleNextPage = useCallback(() => {
     setPage(page + 1);
@@ -60,7 +53,8 @@ const Repositories: React.FC = () => {
     }
   }, [page]);
 
-  const handleClickRepostory = useCallback(() => {
+  const handleClickRepository = useCallback(data => {
+    setRepository(data);
     setShowRepositoryModal(true);
   }, []);
 
@@ -72,46 +66,44 @@ const Repositories: React.FC = () => {
     <Container>
       <Header />
 
-      {showRepositoryModal && (
-        <RepositoryModal handleClickOutsideModal={handleClickOutsideModal} />
+      {showRepositoryModal && repository && (
+        <RepositoryModal
+          handleClickOutsideModal={handleClickOutsideModal}
+          repository={repository}
+        />
       )}
 
       <RepositoriesListContainer>
-        <PersonalInformationContainer>
-          <img
-            src="https://avatars.githubusercontent.com/u/810438?v=4"
-            alt="fulano"
-          />
+        {user && (
+          <PersonalInformationContainer>
+            <img src={user.avatar_url} alt={user.login} />
 
-          <div>
-            <strong>
-              <FiGithub size={14} />
-              <span>jandrade</span>
-            </strong>
+            <div>
+              <strong>
+                <FiGithub size={14} />
+                <span>{user.login}</span>
+              </strong>
 
-            <h3>João de Andrade</h3>
+              <h3>{user.name}</h3>
 
-            <p>
-              I am full-stack developer focused in JS. Always studying to
-              increase my programming skills and very excited about new
-              challenges
-            </p>
-          </div>
-        </PersonalInformationContainer>
+              <p>{user.bio}</p>
+            </div>
+          </PersonalInformationContainer>
+        )}
 
         <strong>Lista de repositórios</strong>
 
         <RepositoriesView>
-          {repositories &&
-            repositories.map(repository => (
+          {repositoriesList &&
+            repositoriesList.map(item => (
               <button
-                key={repository.id}
+                key={item.id}
                 type="button"
-                onClick={handleClickRepostory}
+                onClick={() => handleClickRepository(item)}
               >
-                <strong>{repository.name}</strong>
+                <strong>{item.name}</strong>
 
-                <span>{repository.description}</span>
+                <span>{item.description}</span>
               </button>
             ))}
         </RepositoriesView>

@@ -157,7 +157,7 @@ export const PersonalInformationContainer = styled.div`
 export const GithubInformationContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 
   margin-top: 40px;
 

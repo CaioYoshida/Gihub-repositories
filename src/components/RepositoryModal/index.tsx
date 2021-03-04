@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FiAlertCircle, FiStar } from 'react-icons/fi';
 import { CgGitFork } from 'react-icons/cg';
 
@@ -6,11 +6,7 @@ import Button from '../Button';
 
 import { Container, Modal } from './styles';
 
-interface RepositoryModalProps {
-  handleClickOutsideModal(): void;
-}
-
-interface RepositoryProps {
+export interface RepositoryProps {
   id: number;
   name: string;
   description: string;
@@ -19,28 +15,15 @@ interface RepositoryProps {
   open_issues_count: number;
 }
 
-const user = {
-  id: 144607915,
-  name: 'rocketseat-vscode-reactjs-snippets',
-  description: 'Rocketseat ReactJS snippets for Visual Studio Code Editor',
-  stargazers_count: 1525,
-  forks_count: 36,
-  open_issues_count: 7,
-};
+interface RepositoryModalProps {
+  handleClickOutsideModal(): void;
+  repository: RepositoryProps;
+}
 
 const RepositoryModal: React.FC<RepositoryModalProps> = ({
   handleClickOutsideModal,
+  repository,
 }) => {
-  const [repository, setRepository] = useState<RepositoryProps>();
-
-  useEffect(() => {
-    async function loadRepositoryData(): Promise<void> {
-      setRepository(user);
-    }
-
-    loadRepositoryData();
-  }, []);
-
   return (
     <>
       {repository && (

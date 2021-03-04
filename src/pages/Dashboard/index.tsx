@@ -1,5 +1,7 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { FiGithub, FiSearch } from 'react-icons/fi';
+
+import api from '../../services/api';
 
 import Header from '../../components/Header';
 import Button from '../../components/Button';
@@ -13,8 +15,20 @@ import {
   GithubInformationContainer,
 } from './styles';
 
+export interface UserProps {
+  id: number;
+  avatar_url: string;
+  login: string;
+  name: string;
+  bio: string;
+  public_repos: number;
+  followers: number;
+  following: number;
+}
+
 const Dashboard: React.FC = () => {
   const [user, setUser] = useState('');
+  const [userData, setUserData] = useState<UserProps>();
 
   const [inputError, setInputError] = useState(false);
 
@@ -23,6 +37,16 @@ const Dashboard: React.FC = () => {
       setInputError(true);
     }
   }, [user]);
+
+  useEffect(() => {
+    async function loadUserData(): Promise<void> {
+      const response = await api.get('guilhermerodz');
+
+      setUserData(response.data);
+    }
+
+    loadUserData();
+  }, []);
 
   return (
     <Container>
@@ -43,48 +67,43 @@ const Dashboard: React.FC = () => {
         </div>
       </SearchUserContainer>
 
-      <UserInformationContainer>
-        <PersonalInformationContainer>
-          <img
-            src="https://avatars.githubusercontent.com/u/810438?v=4"
-            alt="fulano"
-          />
+      {userData && (
+        <UserInformationContainer>
+          <PersonalInformationContainer>
+            <img src={userData.avatar_url} alt={userData.login} />
 
-          <div>
-            <strong>
-              <FiGithub size={14} />
-              <span>jandrade</span>
-            </strong>
+            <div>
+              <strong>
+                <FiGithub size={14} />
+                <span>{userData.login}</span>
+              </strong>
 
-            <h3>João de Andrade</h3>
+              <h3>{userData.name}</h3>
 
-            <p>
-              I am full-stack developer focused in JS. Always studying to
-              increase my programming skills and very excited about new
-              challenges
-            </p>
-          </div>
-        </PersonalInformationContainer>
+              <p>{userData.bio}</p>
+            </div>
+          </PersonalInformationContainer>
 
-        <GithubInformationContainer>
-          <div>
-            <span>Repositórios</span>
-            <strong>248</strong>
-          </div>
+          <GithubInformationContainer>
+            <div>
+              <span>Repositórios</span>
+              <strong>{userData.public_repos}</strong>
+            </div>
 
-          <div>
-            <span>Seguidores</span>
-            <strong>6425</strong>
-          </div>
+            <div>
+              <span>Seguidores</span>
+              <strong>{userData.followers}</strong>
+            </div>
 
-          <div>
-            <span>Seguindo</span>
-            <strong>171</strong>
-          </div>
-        </GithubInformationContainer>
+            <div>
+              <span>Seguindo</span>
+              <strong>{userData.following}</strong>
+            </div>
+          </GithubInformationContainer>
 
-        <Button>Ver repositórios</Button>
-      </UserInformationContainer>
+          <Button>Ver repositórios</Button>
+        </UserInformationContainer>
+      )}
     </Container>
   );
 };
