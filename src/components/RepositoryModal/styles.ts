@@ -20,7 +20,7 @@ export const Container = styled.div`
 
 export const Modal = styled.div`
   background-color: #fff;
-  padding: 20px;
+  padding: 15px;
   border-radius: 8px;
 
   h3 {
@@ -39,6 +39,10 @@ export const Modal = styled.div`
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   div {

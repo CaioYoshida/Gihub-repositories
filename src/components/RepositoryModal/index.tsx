@@ -9,6 +9,7 @@ import { Container, Modal } from './styles';
 export interface RepositoryProps {
   id: number;
   name: string;
+  full_name: string;
   description: string;
   stargazers_count: number;
   forks_count: number;
@@ -49,7 +50,9 @@ const RepositoryModal: React.FC<RepositoryModalProps> = ({
               </div>
             </main>
 
-            <Button>Ver reposiório</Button>
+            <a href={`https://www.github.com/${repository.full_name}`}>
+              <Button type="button">Ver reposiório</Button>
+            </a>
           </Modal>
         </Container>
       )}

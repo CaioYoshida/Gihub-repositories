@@ -26,7 +26,7 @@ export const RepositoriesListContainer = styled.div`
   margin-right: 10px;
 
   background-color: #fff;
-  padding: 50px;
+  padding: 30px;
   border-radius: 8px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
@@ -49,10 +49,10 @@ export const PersonalInformationContainer = styled.div`
   flex-direction: row;
 
   img {
-    height: 180px;
-    border-radius: 90px;
+    height: 100px;
+    border-radius: 50px;
 
-    border: 6px solid #bbb;
+    border: 4px solid #bbb;
   }
 
   > div {
@@ -60,7 +60,7 @@ export const PersonalInformationContainer = styled.div`
     flex-direction: column;
     justify-content: center;
 
-    margin-left: 60px;
+    margin-left: 30px;
 
     strong {
       display: flex;
@@ -88,18 +88,9 @@ export const PersonalInformationContainer = styled.div`
   }
 
   @media (max-width: 600px) {
-    flex-direction: column;
-    align-items: center;
-
-    img {
-      height: 160px;
-      width: 160px;
-      border-radius: 80px;
-    }
-
     > div {
       margin-top: 20px;
-      margin-left: 0px;
+      margin-left: 30px;
       align-items: center;
 
       p {
@@ -114,14 +105,16 @@ export const RepositoriesView = styled.div`
   margin-top: 20px;
 
   > button {
+    height: 60px;
     border: none;
     background-color: #d9e8fe;
     border-radius: 8px;
-    padding: 15px;
     width: 100%;
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    padding-left: 8px;
 
     & + button {
       margin-top: 15px;

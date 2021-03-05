@@ -1,17 +1,20 @@
 import React from 'react';
 import { FiLogOut } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 
 import logoImg from '../../assets/logo.svg';
 
 import { Container, SideMenu } from './styles';
 
 const Header: React.FC = () => {
+  const history = useHistory();
+
   return (
     <Container>
       <img src={logoImg} alt="github-repositories" />
 
       <SideMenu>
-        <button type="button">
+        <button type="button" onClick={() => history.push('/')}>
           <FiLogOut size={20} />
           <span>Sair</span>
         </button>

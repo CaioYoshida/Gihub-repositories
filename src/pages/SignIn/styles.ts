@@ -26,6 +26,10 @@ export const LoginContainer = styled.div`
     width: 100%;
     max-width: 400px;
   }
+
+  @media (max-width: 430px) {
+    padding: 0 20px;
+  }
 `;
 
 export const ErrorMessage = styled.div`

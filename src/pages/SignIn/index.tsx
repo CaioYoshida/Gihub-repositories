@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { FiUser, FiMail, FiAlertCircle } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 
 import Input from '../../components/Input';
 
@@ -8,6 +9,8 @@ import logoImg from '../../assets/logo.svg';
 import { Container, LoginContainer, ErrorMessage, Button } from './styles';
 
 const SignIn: React.FC = () => {
+  const history = useHistory();
+
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
 
@@ -17,10 +20,12 @@ const SignIn: React.FC = () => {
     if (user === 'admin' && password === 'senha') {
       console.log('entrou');
       setLoginError(false);
+
+      history.push('/dashboard');
     } else {
       setLoginError(true);
     }
-  }, [user, password]);
+  }, [user, password, history]);
 
   return (
     <Container>

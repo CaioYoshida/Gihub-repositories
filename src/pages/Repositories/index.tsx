@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import { FiGithub } from 'react-icons/fi';
 
 import api from '../../services/api';
@@ -18,7 +19,17 @@ import {
   PaginationContainer,
 } from './styles';
 
+interface Param {
+  user: string;
+}
+
+interface MatchTypes {
+  params: Param;
+}
+
 const Repositories: React.FC = () => {
+  const match: MatchTypes = useRouteMatch();
+
   const [page, setPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(5);
   const [showRepositoryModal, setShowRepositoryModal] = useState(false);
@@ -31,9 +42,9 @@ const Repositories: React.FC = () => {
   useEffect(() => {
     async function loadRepositoriesData(): Promise<void> {
       const { data: repositoriesData } = await api.get(
-        `guilhermerodz/repos?per_page=5&page=${page}`,
+        `${match.params.user}/repos?per_page=5&page=${page}`,
       );
-      const { data: userData } = await api.get('guilhermerodz');
+      const { data: userData } = await api.get(`${match.params.user}`);
 
       setRepositoriesList(repositoriesData);
       setUser(userData);
@@ -41,7 +52,7 @@ const Repositories: React.FC = () => {
     }
 
     loadRepositoriesData();
-  }, [page]);
+  }, [page, match.params.user]);
 
   const handleNextPage = useCallback(() => {
     setPage(page + 1);

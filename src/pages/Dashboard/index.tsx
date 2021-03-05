@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { FiGithub, FiSearch } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 
@@ -27,26 +28,31 @@ export interface UserProps {
 }
 
 const Dashboard: React.FC = () => {
-  const [user, setUser] = useState('');
+  const history = useHistory();
+
+  const [user, setUser] = useState('caioyoshida');
   const [userData, setUserData] = useState<UserProps>();
+  const [searchTrigger, setSearchTrigger] = useState(false);
 
   const [inputError, setInputError] = useState(false);
 
   const handleSearchButton = useCallback(() => {
     if (user === '') {
       setInputError(true);
+    } else {
+      setSearchTrigger(!searchTrigger);
     }
-  }, [user]);
+  }, [user, searchTrigger]);
 
   useEffect(() => {
     async function loadUserData(): Promise<void> {
-      const response = await api.get('guilhermerodz');
+      const response = await api.get(user);
 
       setUserData(response.data);
     }
 
     loadUserData();
-  }, []);
+  }, [searchTrigger]);
 
   return (
     <Container>
@@ -101,7 +107,12 @@ const Dashboard: React.FC = () => {
             </div>
           </GithubInformationContainer>
 
-          <Button>Ver repositórios</Button>
+          <Button
+            type="button"
+            onClick={() => history.push(`/repositories/${user}`)}
+          >
+            Ver repositórios
+          </Button>
         </UserInformationContainer>
       )}
     </Container>

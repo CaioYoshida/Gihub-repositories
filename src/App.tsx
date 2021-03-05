@@ -1,18 +1,15 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import GlobalStyle from './styles/globalStyle';
 
-// import SignIn from './pages/SignIn';
-// import Dashboard from './pages/Dashboard';
-import Repositories from './pages/Repositories';
-
-// import RepositoryModal from './components/RepositoryModal';
+import Routes from './routes';
 
 const App: React.FC = () => (
-  <>
+  <Router>
     <GlobalStyle />
-    <Repositories />
-  </>
+    <Routes />
+  </Router>
 );
 
 export default App;
