@@ -1,6 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { FiUser, FiMail, FiAlertCircle } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
+import { signIn } from '../../store/modules/auth/actions';
 
 import Input from '../../components/Input';
 
@@ -10,22 +13,24 @@ import { Container, LoginContainer, ErrorMessage, Button } from './styles';
 
 const SignIn: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  const [user, setUser] = useState('');
+  const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
   const [loginError, setLoginError] = useState(false);
 
   const handleEnterButton = useCallback(() => {
-    if (user === 'admin' && password === 'senha') {
-      console.log('entrou');
+    if (login === 'admin' && password === 'password') {
+      dispatch(signIn(login, password));
+
       setLoginError(false);
 
       history.push('/dashboard');
     } else {
       setLoginError(true);
     }
-  }, [user, password, history]);
+  }, [login, password, history, dispatch]);
 
   return (
     <Container>
@@ -41,8 +46,8 @@ const SignIn: React.FC = () => {
         <Input
           icon={FiUser}
           isErrored={loginError}
-          defaultValue={user}
-          onChange={item => setUser(item.target.value)}
+          defaultValue={login}
+          onChange={item => setLogin(item.target.value)}
           placeholder="Nome usuário"
         />
         <Input

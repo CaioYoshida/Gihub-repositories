@@ -1,12 +1,15 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { FiGithub, FiSearch } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
+import { useSelector, DefaultRootState, useDispatch } from 'react-redux';
 
 import api from '../../services/api';
 
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
+
+import { searchUser } from '../../store/modules/auth/actions';
 
 import {
   Container,
@@ -27,32 +30,41 @@ export interface UserProps {
   following: number;
 }
 
+interface ReduxStateProps extends DefaultRootState {
+  login?: string;
+  password?: string;
+  searchUser?: string;
+}
+
 const Dashboard: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const data: ReduxStateProps = useSelector(state => state);
 
-  const [user, setUser] = useState('caioyoshida');
+  const [userInput, setUserInput] = useState('');
   const [userData, setUserData] = useState<UserProps>();
-  const [searchTrigger, setSearchTrigger] = useState(false);
 
   const [inputError, setInputError] = useState(false);
 
   const handleSearchButton = useCallback(() => {
-    if (user === '') {
+    if (userInput === '') {
       setInputError(true);
     } else {
-      setSearchTrigger(!searchTrigger);
+      dispatch(searchUser(userInput));
     }
-  }, [user, searchTrigger]);
+  }, [userInput, dispatch]);
 
   useEffect(() => {
     async function loadUserData(): Promise<void> {
-      const response = await api.get(user);
+      if (data.searchUser) {
+        const response = await api.get(data.searchUser);
 
-      setUserData(response.data);
+        setUserData(response.data);
+      }
     }
 
     loadUserData();
-  }, [searchTrigger]);
+  }, [data.searchUser]);
 
   return (
     <Container>
@@ -63,8 +75,8 @@ const Dashboard: React.FC = () => {
           <Input
             isErrored={inputError}
             placeholder="Busca de um usuário"
-            defaultValue={user}
-            onChange={item => setUser(item.target.value)}
+            defaultValue={userInput}
+            onChange={item => setUserInput(item.target.value)}
           />
           <Button type="button" onClick={handleSearchButton}>
             <FiSearch size={18} />
@@ -109,7 +121,7 @@ const Dashboard: React.FC = () => {
 
           <Button
             type="button"
-            onClick={() => history.push(`/repositories/${user}`)}
+            onClick={() => history.push(`/repositories/${data.searchUser}`)}
           >
             Ver repositórios
           </Button>
