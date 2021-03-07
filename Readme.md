@@ -30,13 +30,13 @@ If you want to login the development mode's application you need to pass *admin*
 ### Accessing deployed application
 
 But if you want to see the application running online. The link is below:
-[Github-repositories]([http://caioyoshida.github.io/github-repositories](http://caioyoshida.github.io/github-repositories))
+[Github-repositories](https://upbeat-hugle-56d9c8.netlify.app/)
 
 The login and password are the same from develoment mode.
 
 ### 🛠 Tecnologies
 
 Below, I listed the main packages that were used create this app:
-- [Node.js]([https://nodejs.org/en/](https://nodejs.org/en/))
-- [React]([https://pt-br.reactjs.org/](https://pt-br.reactjs.org/))
-- [TypeScript]([https://www.typescriptlang.org/](https://www.typescriptlang.org/))
+- [Node.js](https://nodejs.org/en/)
+- [React](https://pt-br.reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
