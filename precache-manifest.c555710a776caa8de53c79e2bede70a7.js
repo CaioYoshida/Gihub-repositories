@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "10474860d3adffcb3a0d46c0e4311bf3",
+    "revision": "0496d593034f58f78e000281ba8ea107",
     "url": "/Gihub-repositories/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Gihub-repositories/static/js/2.9e5c6f93.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "397ac0d591d1bb0c3f3b",
-    "url": "/Gihub-repositories/static/js/main.0a4c567a.chunk.js"
+    "revision": "1e34577eb87b8e3f76d1",
+    "url": "/Gihub-repositories/static/js/main.fc49fe57.chunk.js"
   },
   {
     "revision": "b94430637c195b06af19",
