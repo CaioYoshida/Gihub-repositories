@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/Github-repositories/static/js/main.0be8229d.chunk.js",
-    "main.js.map": "/Github-repositories/static/js/main.0be8229d.chunk.js.map",
-    "runtime-main.js": "/Github-repositories/static/js/runtime-main.6dfa5fd6.js",
-    "runtime-main.js.map": "/Github-repositories/static/js/runtime-main.6dfa5fd6.js.map",
-    "static/js/2.8be782b9.chunk.js": "/Github-repositories/static/js/2.8be782b9.chunk.js",
-    "static/js/2.8be782b9.chunk.js.map": "/Github-repositories/static/js/2.8be782b9.chunk.js.map",
-    "index.html": "/Github-repositories/index.html",
-    "precache-manifest.7969265a7aa1802952328d366edb6979.js": "/Github-repositories/precache-manifest.7969265a7aa1802952328d366edb6979.js",
-    "service-worker.js": "/Github-repositories/service-worker.js",
-    "static/js/2.8be782b9.chunk.js.LICENSE.txt": "/Github-repositories/static/js/2.8be782b9.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/Github-repositories/static/media/logo.d5cc199a.svg"
+    "main.js": "/Gihub-repositories/static/js/main.0be8229d.chunk.js",
+    "main.js.map": "/Gihub-repositories/static/js/main.0be8229d.chunk.js.map",
+    "runtime-main.js": "/Gihub-repositories/static/js/runtime-main.bca4bc29.js",
+    "runtime-main.js.map": "/Gihub-repositories/static/js/runtime-main.bca4bc29.js.map",
+    "static/js/2.0f2b9382.chunk.js": "/Gihub-repositories/static/js/2.0f2b9382.chunk.js",
+    "static/js/2.0f2b9382.chunk.js.map": "/Gihub-repositories/static/js/2.0f2b9382.chunk.js.map",
+    "index.html": "/Gihub-repositories/index.html",
+    "precache-manifest.489bccd0e6af5f2e7cf3e3bb9f11519d.js": "/Gihub-repositories/precache-manifest.489bccd0e6af5f2e7cf3e3bb9f11519d.js",
+    "service-worker.js": "/Gihub-repositories/service-worker.js",
+    "static/js/2.0f2b9382.chunk.js.LICENSE.txt": "/Gihub-repositories/static/js/2.0f2b9382.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/Gihub-repositories/static/media/logo.d5cc199a.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.6dfa5fd6.js",
-    "static/js/2.8be782b9.chunk.js",
+    "static/js/runtime-main.bca4bc29.js",
+    "static/js/2.0f2b9382.chunk.js",
     "static/js/main.0be8229d.chunk.js"
   ]
 }
