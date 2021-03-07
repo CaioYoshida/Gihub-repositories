@@ -10,14 +10,15 @@ import Routes from './routes';
 import { store, persistor } from './store';
 
 const App: React.FC = () => (
-  <Provider store={store}>
-    <PersistGate persistor={persistor}>
-      <Router>
-        <GlobalStyle />
+  <Router>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
         <Routes />
-      </Router>
-    </PersistGate>
-  </Provider>
+      </PersistGate>
+    </Provider>
+
+    <GlobalStyle />
+  </Router>
 );
 
 export default App;

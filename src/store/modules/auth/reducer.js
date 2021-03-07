@@ -13,18 +13,18 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.login = action.payload.login;
         draft.password = action.payload.password;
         break;
-      };
+      }
       case '@auth/SIGN_OUT': {
         draft.login = '';
         draft.password = '';
         draft.searchUser = '';
         break;
-      };
+      }
       case '@auth/SEARCH_USER': {
         draft.searchUser = action.payload;
         break;
       }
       default:
-    }
+    };
   })
 }
