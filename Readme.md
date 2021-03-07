@@ -1,3 +1,5 @@
+[Imgur](https://i.imgur.com/acbFfn9.png)
+
 ### About
 
 This is the Github Repositories App. This application was created to get easily Github's user information, like Number of repositories, number of followers, the details about each repository and so on.

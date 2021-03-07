@@ -4,8 +4,6 @@ import { FiLogOut } from 'react-icons/fi';
 
 import { signOut } from '../../store/modules/auth/actions';
 
-import logoImg from '../../assets/logo.svg';
-
 import { Container, SideMenu } from './styles';
 
 interface ReduxStateProps extends DefaultRootState {
@@ -20,7 +18,7 @@ const Header: React.FC = () => {
 
   return (
     <Container>
-      <img src={logoImg} alt="github-repositories" />
+      <img src="https://i.imgur.com/acbFfn9.png" alt="github-repositories" />
 
       <SideMenu>
         <button type="button" onClick={() => dispatch(signOut())}>

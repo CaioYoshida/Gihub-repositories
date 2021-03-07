@@ -10,13 +10,8 @@ import Repositories from '../pages/Repositories';
 const Routes: React.FC = () => (
   <Switch>
     <Route exact path="/" component={SignIn} />
-    <Route exact path="/dashboard" component={Dashboard} isPrivate />
-    <Route
-      exact
-      path="/repositories/:user"
-      component={Repositories}
-      isPrivate
-    />
+    <Route path="/dashboard" component={Dashboard} isPrivate />
+    <Route path="/repositories/:user" component={Repositories} isPrivate />
   </Switch>
 );
 
