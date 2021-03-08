@@ -10,7 +10,7 @@ import Routes from './routes';
 import { store, persistor } from './store';
 
 const App: React.FC = () => (
-  <Router>
+  <Router basename="/Gihub-repositories">
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <Routes />

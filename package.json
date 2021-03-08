@@ -1,5 +1,5 @@
 {
-  "homepage": ".",
+  "homepage": "http://CaioYoshida.github.io/Gihub-repositories",
   "name": "desafio-07",
   "version": "0.1.0",
   "private": true,
@@ -23,7 +23,7 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "predeploy": "yarn build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
