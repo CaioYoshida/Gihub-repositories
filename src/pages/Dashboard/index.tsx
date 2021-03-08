@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { FiGithub, FiSearch } from 'react-icons/fi';
+import { FiGithub, FiSearch, FiAlertCircle } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 import { useSelector, DefaultRootState, useDispatch } from 'react-redux';
 
@@ -17,6 +17,7 @@ import {
   UserInformationContainer,
   PersonalInformationContainer,
   GithubInformationContainer,
+  ErrorMessage,
 } from './styles';
 
 export interface UserProps {
@@ -57,9 +58,14 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     async function loadUserData(): Promise<void> {
       if (data.searchUser) {
-        const response = await api.get(data.searchUser);
+        try {
+          const response = await api.get(data.searchUser);
 
-        setUserData(response.data);
+          setUserData(response.data);
+          setInputError(false);
+        } catch (error) {
+          setInputError(true);
+        }
       }
     }
 
@@ -71,6 +77,12 @@ const Dashboard: React.FC = () => {
       <Header />
       <SearchUserContainer>
         <span>Entre com o nome de um usuário cadastrado no Github</span>
+        {inputError && (
+          <ErrorMessage>
+            <FiAlertCircle size={20} />
+            <span>Usuário inválido. Tente novamente!</span>
+          </ErrorMessage>
+        )}
         <div>
           <Input
             isErrored={inputError}

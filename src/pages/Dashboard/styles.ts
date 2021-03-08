@@ -192,3 +192,19 @@ export const GithubInformationContainer = styled.div`
     }
   }
 `;
+
+export const ErrorMessage = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+
+  color: #c53030;
+
+  margin-bottom: 5px;
+
+  svg {
+    margin-right: 5px;
+  }
+`;
