@@ -1,4 +1,4 @@
-[Imgur](https://i.imgur.com/acbFfn9.png)
+![Github Repositories](https://i.imgur.com/acbFfn9.png)
 
 ### About
 
