@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/Gihub-repositories/static/js/main.f799c285.chunk.js",
-    "main.js.map": "/Gihub-repositories/static/js/main.f799c285.chunk.js.map",
+    "main.js": "/Gihub-repositories/static/js/main.308d6621.chunk.js",
+    "main.js.map": "/Gihub-repositories/static/js/main.308d6621.chunk.js.map",
     "runtime-main.js": "/Gihub-repositories/static/js/runtime-main.bca4bc29.js",
     "runtime-main.js.map": "/Gihub-repositories/static/js/runtime-main.bca4bc29.js.map",
     "static/js/2.929f845f.chunk.js": "/Gihub-repositories/static/js/2.929f845f.chunk.js",
     "static/js/2.929f845f.chunk.js.map": "/Gihub-repositories/static/js/2.929f845f.chunk.js.map",
     "index.html": "/Gihub-repositories/index.html",
-    "precache-manifest.6cbbac9df730c3a8f30c4761fb0a5cd1.js": "/Gihub-repositories/precache-manifest.6cbbac9df730c3a8f30c4761fb0a5cd1.js",
+    "precache-manifest.c05241931822a84a1276025ccaae1a29.js": "/Gihub-repositories/precache-manifest.c05241931822a84a1276025ccaae1a29.js",
     "service-worker.js": "/Gihub-repositories/service-worker.js",
     "static/js/2.929f845f.chunk.js.LICENSE.txt": "/Gihub-repositories/static/js/2.929f845f.chunk.js.LICENSE.txt",
     "static/media/logo.svg": "/Gihub-repositories/static/media/logo.d5cc199a.svg"
@@ -15,6 +15,6 @@
   "entrypoints": [
     "static/js/runtime-main.bca4bc29.js",
     "static/js/2.929f845f.chunk.js",
-    "static/js/main.f799c285.chunk.js"
+    "static/js/main.308d6621.chunk.js"
   ]
 }
