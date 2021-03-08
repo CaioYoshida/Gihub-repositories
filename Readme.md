@@ -32,8 +32,9 @@ If you want to login the development mode's application you need to pass *admin*
 ### Accessing deployed application
 
 But if you want to see the application running online. The link is below:
-[Github-repositories](https://upbeat-hugle-56d9c8.netlify.app/) - hosted on netlify
-[Github-repositories](https://caioyoshida.github.io/Gihub-repositories/) - hosted on Github pages
+
+- [Github-repositories](https://upbeat-hugle-56d9c8.netlify.app/) - hosted on netlify
+- [Github-repositories](https://caioyoshida.github.io/Gihub-repositories/) - hosted on Github pages
 
 The login and password are the same from develoment mode.
 
